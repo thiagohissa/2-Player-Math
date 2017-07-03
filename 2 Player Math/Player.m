@@ -14,6 +14,9 @@
 
 @implementation Player
 
+
+
+
 -(int)getAnswer{
     return (int)self.xValue + (int)self.yValue;
 }

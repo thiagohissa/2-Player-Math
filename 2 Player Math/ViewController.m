@@ -8,6 +8,7 @@
 
 #import "ViewController.h"
 #import "Player.h"
+#import "GameModel.h"
 
 @interface ViewController ()
 
@@ -69,6 +70,8 @@
 
 - (IBAction)submitButton:(id)sender {
     
+    
+    GameModel *gameModel = [GameModel new];
     NSInteger answer =  [_answerLabel.text integerValue];
     
     // Updates Score
@@ -105,9 +108,16 @@
         _player1 = YES;
     }
     
-    _scoreLabel1.text = [NSString stringWithFormat:@"%d", _playerONE.score];
-    _scoreLabel2.text = [NSString stringWithFormat:@"%d", _playerTWO.score];
-    _answerLabel.text = @"";
+    _scoreLabel1.text = [NSString stringWithFormat:@"Score 1: %d", _playerONE.score];
+    _scoreLabel2.text = [NSString stringWithFormat:@"Score 2: %d", _playerTWO.score];
+    
+    if([gameModel getLives:_playerONE andPlayer2:_playerTWO]){
+        _answerLabel.text = @"##### GAME OVER #####";
+    }
+    else{
+        _answerLabel.text = @"";
+    }
+    
     
 }
 

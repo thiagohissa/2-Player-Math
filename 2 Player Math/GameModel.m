@@ -14,8 +14,14 @@
 
 @implementation GameModel
 
--(void)makeGame: (BOOL)turn{
-    
+-(BOOL)getLives: (Player*)player1 andPlayer2: (Player*)player2 {
+    BOOL GAMEOVER = NO;
+    if(player1.lives == 0 || player2.lives == 0){
+        GAMEOVER = YES;
+    }else{
+        GAMEOVER = NO;
+    }
+    return GAMEOVER;
 }
 
 - (void)viewDidLoad {
