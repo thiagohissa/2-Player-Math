@@ -17,29 +17,69 @@
 
 
 
+
+-(void)getAnswerAndUpdateScore: (NSInteger)answerValue{
+            if(self.answer == answerValue){
+                self.score = self.score + 1;
+            }
+            else{
+                self.score = self.score - 1;
+                self.lives = self.lives - 1;
+            }
+
+}
+
+
 -(int)getAnswer{
     return (int)self.xValue + (int)self.yValue;
 }
 
 -(NSString *)getQuestion {
+    
+    
+    int chooseQuestion = arc4random_uniform(4);
     _xValue = arc4random_uniform(20)+1;
     _yValue = arc4random_uniform(20)+1;
+    
+    if(chooseQuestion==0){
     NSString *question = [NSString stringWithFormat:@"%@ : %d + %d ?", self.name, (int)self.xValue, (int)self.yValue];
     _answer = _xValue + _yValue;
-    return question;
+        return question;
+    }
+    else if(chooseQuestion==1){
+        NSString *question = [NSString stringWithFormat:@"%@ : %d * %d ?", self.name, (int)self.xValue, (int)self.yValue];
+        _answer = _xValue*_yValue;
+        return question;
+    }
+    else if(chooseQuestion==2){
+        NSString *question = [NSString stringWithFormat:@"%@ : %d / %d ?", self.name, (int)self.xValue, (int)self.yValue];
+        _answer = _xValue/_yValue;
+        return question;
+    }
+    else {
+        NSString *question = [NSString stringWithFormat:@"%@ : %d - %d ?", self.name, (int)self.xValue, (int)self.yValue];
+        _answer = _xValue-_yValue;
+        return question;
+    }
+    
+    
+    
+    
 }
 
-- (instancetype)init
+
+
+- (instancetype)init:(int)lives andScore:(int)score andName:(NSString*)name
 {
-    
     self = [super init];
     if (self) {
-        _lives = 3;
+        _lives = lives;
         _score = 0;
+        _name = name;
     }
-
     return self;
 }
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];

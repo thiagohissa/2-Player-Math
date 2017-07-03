@@ -26,7 +26,7 @@
 
 
 
-@property (nonatomic) BOOL player1;
+@property (nonatomic) BOOL turn;
 
 @end
 
@@ -75,37 +75,22 @@
     NSInteger answer =  [_answerLabel.text integerValue];
     
     // Updates Score
-    if(!_player1){
-        if(_playerONE.answer == answer){
-            _playerONE.score = _playerONE.score + 1;
-        }
-        else{
-            _playerONE.score = _playerONE.score - 1;
-            _playerONE.lives = _playerONE.lives - 1;
-        }
-        
+    if(!_turn){
+        [_playerONE getAnswerAndUpdateScore:answer];
     }
     else{
-        if(_playerTWO.answer == answer){
-            _playerTWO.score = _playerTWO.score + 1;
-        }
-        else{
-            _playerTWO.score = _playerTWO.score - 1;
-            _playerTWO.lives = _playerTWO.lives - 1;
-        }
-        
-        
+        [_playerTWO getAnswerAndUpdateScore:answer];
     }
     
     
     // Select next player
-    if(_player1){
+    if(_turn){
         _playerLabel.text = [_playerONE getQuestion];
-        _player1 = NO;
+        _turn = NO;
     }
-    else if(!_player1){
+    else if(!_turn){
         _playerLabel.text = [_playerTWO getQuestion];
-        _player1 = YES;
+        _turn = YES;
     }
     
     _scoreLabel1.text = [NSString stringWithFormat:@"Score 1: %d", _playerONE.score];
@@ -113,6 +98,22 @@
     
     if([gameModel getLives:_playerONE andPlayer2:_playerTWO]){
         _answerLabel.text = @"##### GAME OVER #####";
+        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Restart" message:@"Restart the game ?" preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:^(UIAlertAction * action) {
+            NSLog(@"Goodbye");
+        }];
+        UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"Yes" style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {
+            _playerONE.score = 0;
+            _playerONE.lives = 3;
+            _playerTWO.score = 0;
+            _playerTWO.lives = 3;
+            _scoreLabel1.text = [NSString stringWithFormat:@"Score 1: %d", _playerONE.score];
+            _scoreLabel2.text = [NSString stringWithFormat:@"Score 2: %d", _playerTWO.score];
+            _answerLabel.text = @"";
+        }];
+        [alertController addAction:cancelAction];
+        [alertController addAction:okAction];
+        [self presentViewController:alertController animated: YES completion: nil];
     }
     else{
         _answerLabel.text = @"";
@@ -132,17 +133,12 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     
-    Player *player1 = [[Player alloc] init];
-    Player *player2 = [[Player alloc] init];
-    player1.name = @"Player 1";
-    player2.name = @"Player 2";
-    
-    
+    Player *player1 = [[Player alloc] init:3 andScore:0 andName:@"Player 1"];
+    Player *player2 = [[Player alloc] init:3 andScore:0 andName:@"Player 2"];
     _playerONE = player1;
     _playerTWO = player2;
-    
     _playerLabel.text = [_playerONE getQuestion];
-    _player1 = NO;
+    _turn = NO;
     
     
 }

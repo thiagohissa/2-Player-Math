@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "353E1A57FED3A9FD5B44B0395E18DB2969F45A67",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "0C403613E9B3B5C85A090F04FADA453BF2A68240" : 9223372036854775807,
+    "353E1A57FED3A9FD5B44B0395E18DB2969F45A67" : 9223372036854775807
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "21DF01BD-5BF0-4CCB-AFCA-68C6B3A24978",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "0C403613E9B3B5C85A090F04FADA453BF2A68240" : "",
+    "353E1A57FED3A9FD5B44B0395E18DB2969F45A67" : "2%20Player%20Math\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "2 Player Math",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "2 Player Math.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "github.com:thiagohissa\/Threelow.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "0C403613E9B3B5C85A090F04FADA453BF2A68240"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "github.com:thiagohissa\/2-Player-Math.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "353E1A57FED3A9FD5B44B0395E18DB2969F45A67"
+    }
+  ]
+}

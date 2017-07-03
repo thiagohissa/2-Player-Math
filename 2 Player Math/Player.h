@@ -17,4 +17,7 @@
 @property (nonatomic) NSInteger answer;
 -(NSString *)getQuestion;
 -(int)getAnswer;
+-(void)getAnswerAndUpdateScore: (NSInteger)answerValue;
+- (instancetype)init:(int)lives andScore:(int)score andName:(NSString*)name;
+
 @end
