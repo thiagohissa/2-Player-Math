@@ -33,6 +33,7 @@
 @implementation ViewController
 
 
+
 - (IBAction)button0:(id)sender {
     _answerLabel.text = [_answerLabel.text stringByAppendingString:@"0"];
 }
@@ -93,11 +94,11 @@
         _turn = YES;
     }
     
-    _scoreLabel1.text = [NSString stringWithFormat:@"Score 1: %d", _playerONE.score];
-    _scoreLabel2.text = [NSString stringWithFormat:@"Score 2: %d", _playerTWO.score];
+    _scoreLabel1.text = [NSString stringWithFormat:@"Score 1: \t %d", _playerONE.score];
+    _scoreLabel2.text = [NSString stringWithFormat:@"Score 2: \t %d", _playerTWO.score];
     
     if([gameModel getLives:_playerONE andPlayer2:_playerTWO]){
-        _answerLabel.text = @"##### GAME OVER #####";
+        _answerLabel.text = @"########### GAME OVER ############";
         UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Restart" message:@"Restart the game ?" preferredStyle:UIAlertControllerStyleAlert];
         UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:^(UIAlertAction * action) {
             NSLog(@"Goodbye");
@@ -107,8 +108,8 @@
             _playerONE.lives = 3;
             _playerTWO.score = 0;
             _playerTWO.lives = 3;
-            _scoreLabel1.text = [NSString stringWithFormat:@"Score 1: %d", _playerONE.score];
-            _scoreLabel2.text = [NSString stringWithFormat:@"Score 2: %d", _playerTWO.score];
+            _scoreLabel1.text = [NSString stringWithFormat:@"Score 1: \t %d", _playerONE.score];
+            _scoreLabel2.text = [NSString stringWithFormat:@"Score 2: \t %d", _playerTWO.score];
             _answerLabel.text = @"";
         }];
         [alertController addAction:cancelAction];
@@ -141,6 +142,7 @@
     _turn = NO;
     
     
+    
 }
 
 
@@ -148,6 +150,25 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+-(void)viewDidAppear:(BOOL)animated{
+    [UIView animateWithDuration:10 animations:^{
+        UIView *bottomBorder = [[UIView alloc] initWithFrame:CGRectMake(0, _scoreLabel1.frame.size.height - 1.0f, _scoreLabel1.frame.size.width, 1)];
+        bottomBorder.backgroundColor = [UIColor whiteColor];
+        [_scoreLabel1 addSubview:bottomBorder];
+        UIView *bottomBorder2 = [[UIView alloc] initWithFrame:CGRectMake(0, _scoreLabel2.frame.size.height - 1.0f, _scoreLabel2.frame.size.width, 1)];
+        bottomBorder2.backgroundColor = [UIColor whiteColor];
+        [_scoreLabel2 addSubview:bottomBorder2];
+        
+        
+        
+        
+        
+        
+    }];
+}
+
+
 
 
 
