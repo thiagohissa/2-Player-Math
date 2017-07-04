@@ -24,7 +24,7 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *scoreLabel2;
 
-
+@property (nonatomic) BOOL TURNCOUNT;
 
 @property (nonatomic) BOOL turn;
 
@@ -32,6 +32,22 @@
 
 @implementation ViewController
 
+- (IBAction)switchScoreLabelONOFF:(id)sender {
+    
+    
+    if(_TURNCOUNT){
+        _scoreLabel1.hidden = NO;
+        _scoreLabel2.hidden = NO;
+        _TURNCOUNT = NO;
+    }
+    else{
+        _scoreLabel1.hidden = YES;
+        _scoreLabel2.hidden = YES;
+        _TURNCOUNT = YES;
+    }
+    
+   
+}
 
 
 - (IBAction)button0:(id)sender {
@@ -133,6 +149,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
+    _TURNCOUNT = NO;
     
     Player *player1 = [[Player alloc] init:3 andScore:0 andName:@"Player 1"];
     Player *player2 = [[Player alloc] init:3 andScore:0 andName:@"Player 2"];
@@ -152,20 +169,20 @@
 }
 
 -(void)viewDidAppear:(BOOL)animated{
-    [UIView animateWithDuration:10 animations:^{
-        UIView *bottomBorder = [[UIView alloc] initWithFrame:CGRectMake(0, _scoreLabel1.frame.size.height - 1.0f, _scoreLabel1.frame.size.width, 1)];
-        bottomBorder.backgroundColor = [UIColor whiteColor];
-        [_scoreLabel1 addSubview:bottomBorder];
-        UIView *bottomBorder2 = [[UIView alloc] initWithFrame:CGRectMake(0, _scoreLabel2.frame.size.height - 1.0f, _scoreLabel2.frame.size.width, 1)];
-        bottomBorder2.backgroundColor = [UIColor whiteColor];
-        [_scoreLabel2 addSubview:bottomBorder2];
-        
-        
-        
-        
-        
-        
-    }];
+//    [UIView animateWithDuration:10 animations:^{
+//        UIView *bottomBorder = [[UIView alloc] initWithFrame:CGRectMake(0, _scoreLabel1.frame.size.height - 1.0f, _scoreLabel1.frame.size.width, 1)];
+//        bottomBorder.backgroundColor = [UIColor whiteColor];
+//        [_scoreLabel1 addSubview:bottomBorder];
+//        UIView *bottomBorder2 = [[UIView alloc] initWithFrame:CGRectMake(0, _scoreLabel2.frame.size.height - 1.0f, _scoreLabel2.frame.size.width, 1)];
+//        bottomBorder2.backgroundColor = [UIColor whiteColor];
+//        [_scoreLabel2 addSubview:bottomBorder2];
+//    
+//        
+//        
+//        
+//        
+//        
+//    }];
 }
 
 

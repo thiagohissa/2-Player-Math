@@ -135,6 +135,13 @@
                                 <color key="textColor" red="0.018885821104049683" green="0.42980113625526428" blue="0.89963448047637939" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" id="fOx-24-nb7">
+                                <rect key="frame" x="306" y="34" width="51" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <connections>
+                                    <action selector="switchScoreLabelONOFF:" destination="BYZ-38-t0r" eventType="valueChanged" id="Sz1-ZO-4Lv"/>
+                                </connections>
+                            </switch>
                         </subviews>
                         <color key="backgroundColor" red="0.11332259161210395" green="0.10618724789590155" blue="0.22061389593908631" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
